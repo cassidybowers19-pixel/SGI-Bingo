@@ -90,146 +90,184 @@ button{
   padding:8px;
   border-bottom:1px solid #333;
 }
-/* Loading Screen */
-
 #loadingScreen{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    background:linear-gradient(
-        180deg,
-        #7fd8ff 0%,
-        #bfefff 45%,
-        #ffe8a6 100%
-    );
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-    transition:opacity .6s ease;
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+  transition:opacity .7s ease;
+  background:linear-gradient(to bottom,#88D8F7 0%,#CBEFFF 45%,#FFF4D6 100%);
 }
 
 .loadingLogo{
-    width:180px;
-    max-width:45vw;
-    animation:floatLogo 2.5s ease-in-out infinite;
-    z-index:3;
+  width:190px;
+  max-width:45vw;
+  animation:floatLogo 3s ease-in-out infinite;
+  z-index:5;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.25));
 }
 
-#loadingScreen h2{
-    color:#FF4FA3;
-    margin-top:18px;
-    margin-bottom:5px;
+#loadingScreen h1{
+  color:#FF4FA3;
+  margin:18px 0 8px;
+  font-size:42px;
+  z-index:5;
 }
 
 #loadingScreen p{
-    color:#075F73;
+  color:#075F73;
+  font-size:18px;
+  z-index:5;
 }
 
 .sun{
-    position:absolute;
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:#FFD54F;
-    top:70px;
-    right:70px;
-    box-shadow:0 0 50px #FFD54F;
-    animation:pulseSun 4s infinite;
+  position:absolute;
+  bottom:145px;
+  right:60px;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:#FFD95A;
+  box-shadow:0 0 45px #FFD95A;
+  animation:sunRise 3s ease-out forwards, sunPulse 5s ease-in-out infinite 3s;
+}
+
+.sparkle{
+  position:absolute;
+  z-index:2;
+  font-size:22px;
+  opacity:.8;
+  animation:sparkleFloat 4s ease-in-out infinite;
+}
+
+.sparkle1{top:22%;left:20%;}
+.sparkle2{top:16%;right:25%;animation-delay:1s;}
+.sparkle3{top:34%;right:16%;animation-delay:2s;}
+
+.driftwoodBar{
+  width:230px;
+  height:18px;
+  border-radius:20px;
+  background:#8B5A2B;
+  overflow:hidden;
+  z-index:5;
+  margin-top:14px;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.35);
+}
+
+.waterFill{
+  height:100%;
+  width:0%;
+  background:#00BCD4;
+  border-radius:20px;
+  animation:fillWater 1.8s ease-out forwards;
+}
+
+.sand{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:140px;
+  background:#F6D9A2;
 }
 
 .waves{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:180px;
-    overflow:hidden;
+  position:absolute;
+  bottom:90px;
+  width:100%;
+  height:140px;
 }
 
 .wave{
-    position:absolute;
-    width:200%;
-    height:100%;
-    border-radius:40%;
-    left:-50%;
+  position:absolute;
+  width:200%;
+  height:180px;
+  border-radius:45%;
+  left:-50%;
 }
 
 .wave1{
-    background:rgba(0,188,212,.35);
-    animation:waveMove 9s linear infinite;
-    bottom:-80px;
+  background:rgba(0,188,212,.45);
+  animation:waveLeft 10s linear infinite;
 }
 
 .wave2{
-    background:rgba(0,150,200,.30);
-    animation:waveMoveReverse 12s linear infinite;
-    bottom:-95px;
+  background:rgba(255,255,255,.35);
+  animation:waveRight 14s linear infinite;
+  bottom:-18px;
 }
 
 .wave3{
-    background:rgba(255,255,255,.35);
-    animation:waveMove 15s linear infinite;
-    bottom:-110px;
+  background:rgba(0,150,200,.25);
+  animation:waveLeft 18s linear infinite;
+  bottom:-36px;
 }
 
 @keyframes floatLogo{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-12px);
-    }
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
 }
 
-@keyframes pulseSun{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.05);
-    }
+@keyframes sunRise{
+  from{transform:translateY(180px);}
+  to{transform:translateY(0);}
 }
 
-@keyframes waveMove{
-    from{
-        transform:translateX(0);
-    }
-    to{
-        transform:translateX(-25%);
-    }
+@keyframes sunPulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.08);}
 }
 
-@keyframes waveMoveReverse{
-    from{
-        transform:translateX(-25%);
-    }
-    to{
-        transform:translateX(0);
-    }
+@keyframes sparkleFloat{
+  0%,100%{transform:translateY(0);opacity:.4;}
+  50%{transform:translateY(-12px);opacity:1;}
 }
 
+@keyframes fillWater{
+  from{width:0%;}
+  to{width:100%;}
+}
+
+@keyframes waveLeft{
+  from{transform:translateX(0);}
+  to{transform:translateX(-25%);}
+}
+
+@keyframes waveRight{
+  from{transform:translateX(-25%);}
+  to{transform:translateX(0);}
+}
 </style>
 </head>
  
 <body>
-
 <div id="loadingScreen">
+  <div class="sun"></div>
 
-    <div class="sun"></div>
+  <div class="sparkle sparkle1">✨</div>
+  <div class="sparkle sparkle2">✨</div>
+  <div class="sparkle sparkle3">✨</div>
 
-    <img src="sgi-bingo-icon-192.png"
-         alt="SGI Bingo"
-         class="loadingLogo">
+  <img src="sgi-bingo-icon-192.png" alt="SGI Bingo Logo" class="loadingLogo">
 
-    <h2>SGI Bingo</h2>
-    <p>Searching the island for dolphins, shells, and Hooter Brown🍺🍺......</p>
+  <h1>SGI Bingo</h1>
+  <p>Loading your beach adventure...</p>
 
-    <div class="waves">
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-    </div>
+  <div class="driftwoodBar">
+    <div class="waterFill"></div>
+  </div>
+
+  <div class="sand"></div>
+
+  <div class="waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
 
 </div>
  
@@ -542,15 +580,17 @@ window.adminReset = async function(){
 };
 
 window.addEventListener("load", () => {
+  const loading = document.getElementById("loadingScreen");
+
   setTimeout(() => {
-    const loadingScreen = document.getElementById("loadingScreen");
-    if (loadingScreen) {
-      loadingScreen.style.opacity = "0";
+    if (loading) {
+      loading.style.opacity = "0";
+
       setTimeout(() => {
-        loadingScreen.style.display = "none";
-      }, 500);
+        loading.remove();
+      }, 700);
     }
-  }, 1200);
+  }, 2200);
 });
  
 function showToast(message){
