@@ -117,23 +117,31 @@ Score: <strong id="scoreDisplay">0</strong>
 <div class="version">
 SGI Bingo v1.0.0 • Summer 2026 🏖️
 </div>
- 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC793eX0xH6elYhc1MTj57z3mEZmi4wfXk",
-  authDomain: "sgi-bingo.firebaseapp.com",
-  projectId: "sgi-bingo",
-  storageBucket: "sgi-bingo.firebasestorage.app",
-  messagingSenderId: "756889050776",
-  appId: "1:756889050776:web:c03fce5f01c222a9c07aed"
-};
- 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+<script type="module"> 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js"; 
+import {   
+getFirestore,   
+collection,   
+doc,   
+setDoc,   
+getDoc,   
+getDocs,   
+deleteDoc,   
+onSnapshot,   
+serverTimestamp 
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";   
+const firebaseConfig = {   
+apiKey: "AIzaSyC793eX0xH6elYhc1MTj57z3mEZmi4wfXk",   
+authDomain: "sgi-bingo.firebaseapp.com",   
+projectId: "sgi-bingo",   
+storageBucket: "sgi-bingo.firebasestorage.app",   
+messagingSenderId: "756889050776",   
+appId: "1:756889050776:web:c03fce5f01c222a9c07aed" };
 
- 
+const app = initializeApp(firebaseConfig); 
+const db = getFirestore(app);  
+
 const words = [
 "Blue Parrot",
 "Eddie's Ice Cream",
