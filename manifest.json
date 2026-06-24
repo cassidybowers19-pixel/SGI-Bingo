@@ -7,12 +7,12 @@
   "theme_color": "#00bcd4",
   "icons": [
     {
-      "src": "sgi-bingo-icon-192.png",
+      "src": "sgi-bingo-icon-192.png.jpg",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "sgi-bingo-icon-512.png",
+      "src": "sgi-bingo-icon-512.png.jpg",
       "sizes": "512x512",
       "type": "image/png"
     }
